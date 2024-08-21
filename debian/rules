@@ -31,6 +31,8 @@ export LC_ALL=C.UTF-8
 build-arch: build
 build-indep: build
 build:
+	dh_update_autotools_config
+	dh_autoreconf
 	[ -e configure ] || autoreconf -si
 	./configure --prefix=/usr --mandir=/usr/share/man --disable-silent-rules ${CONFIGURE_EXTRA}
 	$(MAKE)
